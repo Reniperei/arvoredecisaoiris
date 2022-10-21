@@ -1,22 +1,14 @@
 import streamlit as st
 
 from sklearn.ensemble import RandomForestClassifier
-import pandas as pd 
-
-######################################################################
-#                importando os dados do csv                          #
+import pandas as pd
 
 dados = pd.read_csv('/content/drive/MyDrive/IA claudio/Iris - Iris (1).csv')
-######################################################################
-#            separar as classes das features                         #
 classes = dados['Species']
 nomesColunas = dados.columns.to_list()
-tamanho = len(nomesColunas)#quantos nomes tem
+tamanho = len(nomesColunas)
 nomesColunas = nomesColunas[1:tamanho-1]
-features = dados[nomesColunas]#monta o features
-
-######################################################################
-#            quebrar os dados em teste e treino                      #
+features = dados[nomesColunas]
 from sklearn.model_selection import train_test_split
 
 features_treino,features_teste,classes_treino,classes_teste = train_test_split(features,
